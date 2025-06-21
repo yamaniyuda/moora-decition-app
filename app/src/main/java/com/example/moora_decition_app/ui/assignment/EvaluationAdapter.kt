@@ -39,6 +39,7 @@ class EvaluationAdapter : RecyclerView.Adapter<EvaluationAdapter.ViewHolder>() {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_assignment, parent, false)
         return ViewHolder(view)
+
     }
 
     override fun getItemCount(): Int = data.size
