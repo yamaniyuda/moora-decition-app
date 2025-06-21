@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">moora-decition-app</string>
+    <string name="title_home">Home</string>
+    <string name="title_criteria">Criteria</string>
+    <string name="title_grade">Grade</string>
+    <string name="title_award">Award</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_input_hint">Tulis sesuatu di sini...</string>
+    <string name="nama_detail_cth_10_000"><![CDATA[Nama Detail (cth: <10.000)]]></string>
+    <string name="tingkat_cth_tinggi">Tingkat (cth: Tinggi)</string>
+    <string name="bobot_cth_4">Bobot (cth: 4)</string>
+    <string name="c1_harga_cost_10">C1 . Harga . Cost . 10%</string>
+    <string name="_10000_standar_10"><![CDATA[- <10000 / Standar / 10]]></string>
+    <string name="alternatif_a1">Alternatif: A1</string>
+</resources>

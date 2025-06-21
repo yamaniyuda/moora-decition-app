@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginHorizontal="4dp"
+    android:background="@android:color/white"
+    android:padding="8dp">
+
+    <!-- Tombol Hapus -->
+    <ImageButton
+        android:id="@+id/btnHapus"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Hapus"
+        android:src="@android:drawable/ic_delete"
+        app:tint="@android:color/holo_red_dark" />
+
+    <LinearLayout
+        android:id="@+id/formInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/btnHapus"
+        android:layout_marginTop="8dp">
+
+        <!-- Nama Detail -->
+        <EditText
+            android:id="@+id/input_criteria_detail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nama_detail_cth_10_000"
+            android:inputType="text" />
+
+        <!-- Tingkat -->
+        <EditText
+            android:id="@+id/input_criteria_detail_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tingkat_cth_tinggi"
+            android:inputType="text"
+            android:layout_marginTop="6dp" />
+
+        <!-- Bobot -->
+        <EditText
+            android:id="@+id/input_criteria_detail_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/bobot_cth_4"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="6dp" />
+    </LinearLayout>
+</RelativeLayout>

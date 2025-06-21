@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.moora_decition_app.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_criteria"
+        android:name="com.example.moora_decition_app.ui.criteria.CriteriaFragment"
+        android:label="@string/title_criteria"
+        tools:layout="@layout/fragment_criteria" >
+        <action
+            android:id="@+id/action_navigation_criteria_to_navigation_add_criteria"
+            app:destination="@id/navigation_add_criteria" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_assignment"
+        android:name="com.example.moora_decition_app.ui.assignment.AssignmentFragment"
+        android:label="@string/title_grade"
+        tools:layout="@layout/fragment_assigment" />
+
+    <fragment
+        android:id="@+id/navigation_add_criteria"
+        android:name="com.example.moora_decition_app.ui.criteria.AddCriteriaFragment"
+        android:label="Tambah Kriteria"
+        tools:layout="@layout/fragment_add_criteria" />
+
+    <fragment
+        android:id="@+id/navigation_award"
+        android:name="com.example.moora_decition_app.ui.award.AwardFragment"
+        android:label="@string/title_award"
+        tools:layout="@layout/fragment_award" />
+</navigation>
