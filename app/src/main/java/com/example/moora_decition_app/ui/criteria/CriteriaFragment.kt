@@ -11,6 +11,7 @@ import com.example.moora_decition_app.R
 import com.example.moora_decition_app.data.db.MooraDatabase
 import com.example.moora_decition_app.data.repository.CriteriaRepository
 import com.example.moora_decition_app.databinding.FragmentCriteriaBinding
+import com.example.moora_decition_app.model.CriteriaWithDetails
 
 class CriteriaFragment : Fragment() {
 
@@ -32,7 +33,12 @@ class CriteriaFragment : Fragment() {
 
         // Setup RecyclerView
         val data = criteriaRepo.getAllWithDetails()
-        adapter = CriteriaListAdapter(data)
+        adapter = CriteriaListAdapter(data) { selectedItem ->
+            criteriaRepo.deleteByCode(selectedItem.code)
+            val updatedList = criteriaRepo.getAllWithDetails()
+            adapter = CriteriaListAdapter(updatedList, this@CriteriaFragment::onDeleteClicked)
+            binding.recyclerViewCriteria.adapter = adapter
+        }
         binding.recyclerViewCriteria.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewCriteria.adapter = adapter
 
@@ -42,6 +48,13 @@ class CriteriaFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun onDeleteClicked(item: CriteriaWithDetails) {
+        criteriaRepo.deleteByCode(item.code)
+        val updatedList = criteriaRepo.getAllWithDetails()
+        adapter = CriteriaListAdapter(updatedList, ::onDeleteClicked)
+        binding.recyclerViewCriteria.adapter = adapter
     }
 
     override fun onDestroyView() {

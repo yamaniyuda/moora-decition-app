@@ -76,4 +76,8 @@ class EvaluationRepository(private val db: MooraDatabase) {
             EvaluationDisplay(altName, details)
         }
     }
+
+    fun deleteByAlternatifId(alternatifId: Int): Boolean {
+        return db.writableDatabase.delete("evaluation", "alternatif_id = ?", arrayOf(alternatifId.toString())) > 0
+    }
 }

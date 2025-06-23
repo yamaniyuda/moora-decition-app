@@ -34,7 +34,11 @@ class AssignmentFragment : Fragment() {
         val factory = AsignmentViewModelFactory(db)
         viewModel = ViewModelProvider(this, factory)[AssignmentViewModel::class.java]
 
-        adapter = EvaluationAdapter()
+        adapter = EvaluationAdapter  { altName ->
+            // cari ID alternatif berdasarkan nama
+            val alt = viewModel.alternatifList.value?.find { it.name == altName }
+            alt?.id?.let { viewModel.deleteByAlternatifId(it) }
+        }
         binding.recyclerViewAssignment.adapter = adapter
         binding.recyclerViewAssignment.layoutManager = LinearLayoutManager(requireContext())
 

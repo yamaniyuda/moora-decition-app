@@ -91,4 +91,11 @@ class CriteriaRepository(private val db: MooraDatabase) {
 
         return list
     }
+
+
+    fun deleteByCode(code: String): Boolean {
+        val dbWritable = db.writableDatabase
+        dbWritable.delete("criteria_detail", "criteria_code = ?", arrayOf(code))
+        return dbWritable.delete("criteria", "code = ?", arrayOf(code)) > 0
+    }
 }

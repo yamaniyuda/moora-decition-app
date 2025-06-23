@@ -3,13 +3,14 @@ package com.example.moora_decition_app.ui.assignment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moora_decition_app.R
 import com.example.moora_decition_app.model.EvaluationDisplay
 
-class EvaluationAdapter : RecyclerView.Adapter<EvaluationAdapter.ViewHolder>() {
+class EvaluationAdapter(private val onDeleteClick: (alternatifName: String) -> Unit) : RecyclerView.Adapter<EvaluationAdapter.ViewHolder>() {
 
     private val data = mutableListOf<EvaluationDisplay>()
 
@@ -22,6 +23,7 @@ class EvaluationAdapter : RecyclerView.Adapter<EvaluationAdapter.ViewHolder>() {
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private val textNama: TextView = view.findViewById(R.id.textNamaAlternatif)
         private val listContainer: LinearLayout = view.findViewById(R.id.listDetail)
+        private val btnDelete: ImageButton = view.findViewById(R.id.btnDeleteAssigment)
 
         fun bind(evaluation: EvaluationDisplay) {
             textNama.text = evaluation.alternatifName
@@ -31,6 +33,10 @@ class EvaluationAdapter : RecyclerView.Adapter<EvaluationAdapter.ViewHolder>() {
                 val item = TextView(view.context)
                 item.text = "- ${it.criteriaName} (${it.criteriaCode}) : ${it.detailWeight}"
                 listContainer.addView(item)
+            }
+
+            btnDelete.setOnClickListener {
+                onDeleteClick(evaluation.alternatifName)
             }
         }
     }

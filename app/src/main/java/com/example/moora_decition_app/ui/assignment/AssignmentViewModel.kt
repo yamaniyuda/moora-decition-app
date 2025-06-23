@@ -42,4 +42,9 @@ class AssignmentViewModel(
         evaluationRepo.create(Evaluation(0, alternatifId, detailId))
         evaluationList.value = evaluationRepo.getGroupedEvaluation() // ini seharusnya bekerja
     }
+
+    fun deleteByAlternatifId(alternatifId: Int) {
+        evaluationRepo.deleteByAlternatifId(alternatifId)
+        evaluationList.value = evaluationRepo.getGroupedEvaluation()
+    }
 }

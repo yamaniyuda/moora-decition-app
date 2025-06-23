@@ -8,17 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moora_decition_app.R
 import com.example.moora_decition_app.model.CriteriaWithDetails
 
-class CriteriaListAdapter(private val list: List<CriteriaWithDetails>) :
+class CriteriaListAdapter(private val list: List<CriteriaWithDetails>, private val onDeleteClick: (CriteriaWithDetails) -> Unit) :
     RecyclerView.Adapter<CriteriaListAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val header: TextView = view.findViewById(R.id.textCriteriaHeader)
         val detailText: TextView = view.findViewById(R.id.textCriteriaDetails)
+        val btnDelete: View = view.findViewById(R.id.btnDeleteCriteria)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_criteria_with_details, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_criteria_with_details, parent, false)
         return ViewHolder(v)
     }
 
@@ -32,5 +32,9 @@ class CriteriaListAdapter(private val list: List<CriteriaWithDetails>) :
             "- ${it.name} / ${it.level} / ${it.weight}"
         }
         holder.detailText.text = detailText
+
+        holder.btnDelete.setOnClickListener {
+            onDeleteClick(item)
+        }
     }
 }
